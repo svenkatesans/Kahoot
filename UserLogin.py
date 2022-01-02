@@ -1,3 +1,4 @@
+import time
 import counter
 import sqlite3
 import pyttsx3
@@ -38,7 +39,7 @@ log = Login(admin1, admin2)
 
 while q == True:
     print("\n++++++ Welcome to Kahoot Quiz Board ++++++\n")
-    engine.say("Welcome to Kahoot Quiz Board")
+    #engine.say("Welcome to Kahoot Quiz Board")
     print("[Choice 1: For Registration  ]")
     print("[Choice 2: For Registered User]")
     print("[Choice 3: Create Quiz Room]")
@@ -98,10 +99,16 @@ while q == True:
             print("OPTION4:-", q5)
             print("Enter You Answer Choice:")
             #counter.stopwatch(60)
+            tic = time.perf_counter()
             gamer_ans = input()
+            toc = time.perf_counter()
+            tim = toc - tic
+            print(f" Your answered the question  in {tim:0.2f} seconds")
             if a6 == gamer_ans:
                 print("you answer is correct")
                 count = count + 1
+        print("total correct answers:", count)
+
     else:
         print("Thank you,Welcome  Again")
         sx = "Thank you,Welcome  Again"
@@ -110,6 +117,6 @@ while q == True:
         engine.runAndWait()
         q = False
 
-print("total correct answers:", count)
+#print("total correct answers:", count)
 
 con.close()
